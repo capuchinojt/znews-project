@@ -1,95 +1,82 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import { NewsGrid } from '@/components/news/NewsGrid';
+import { FeaturedNews } from '@/components/news/FeaturedNews';
+import { CategorySection } from '@/components/news/CategorySection';
 
-export default function Home() {
+async function getNewsData() {
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+  console.log('API baseUrl:', baseUrl);
+
+  try {
+    const urls = [
+      `${baseUrl}/api/news/featured`,
+      `${baseUrl}/api/news?limit=20`,
+      `${baseUrl}/api/categories`,
+      `${baseUrl}/api/news/by-category?limit=4`
+    ];
+    console.log('Fetching:', urls);
+
+    const [featuredRes, latestRes, categoriesRes, categoryArticlesRes] = await Promise.all([
+      fetch(urls[0], { next: { revalidate: 300 } }),
+      fetch(urls[1], { next: { revalidate: 300 } }),
+      fetch(urls[2], { next: { revalidate: 3600 } }),
+      fetch(urls[3], { next: { revalidate: 300 } })
+    ]);
+
+    // Log status
+    console.log('Status:', featuredRes.status, latestRes.status, categoriesRes.status, categoryArticlesRes.status);
+
+    if (
+      !featuredRes.ok ||
+      !latestRes.ok ||
+      !categoriesRes.ok ||
+      !categoryArticlesRes.ok
+    ) {
+      throw new Error('One or more API endpoints failed');
+    }
+
+    const [featuredNews, latestNews, categories, categoryArticles] = await Promise.all([
+      featuredRes.json(),
+      latestRes.json(),
+      categoriesRes.json(),
+      categoryArticlesRes.json()
+    ]);
+
+    return {
+      featuredNews: featuredNews.data || [],
+      latestNews: latestNews.data || [],
+      categories: categories.data || [],
+      categoryArticles: categoryArticles.data || {}
+    };
+  } catch (error) {
+    console.error('Error fetching news data:', error);
+    return {
+      featuredNews: [],
+      latestNews: [],
+      categories: [],
+      categoryArticles: {}
+    };
+  }
+}
+
+export default async function HomePage() {
+  const { featuredNews, latestNews, categories, categoryArticles } = await getNewsData();
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+    <main className="min-h-screen">
+      {featuredNews.length > 0 && <FeaturedNews articles={featuredNews} />}
+      {categories.length > 0 && (
+        <CategorySection 
+          categories={categories} 
+          articlesByCategory={categoryArticles}
         />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      )}
+      {latestNews.length > 0 && (
+        <NewsGrid 
+          articles={latestNews} 
+          title="Tin tức mới nhất"
+          columns={{ xs: 1, sm: 2, md: 3, lg: 4 }}
+        />
+      )}
+    </main>
   );
 }

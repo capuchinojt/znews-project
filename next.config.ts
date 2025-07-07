@@ -4,7 +4,7 @@ const nextConfig = {
     // appDir: true,
   },
   images: {
-    domains: ['example.com', 'images.unsplash.com'],
+    domains: ['example.com', 'images.unsplash.com', 'photo.znews.vn'],
     formats: ['image/webp', 'image/avif'],
   },
   compress: true,

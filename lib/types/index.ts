@@ -13,12 +13,20 @@ export interface NewsArticle {
   views?: number;
 }
 
-export interface Category {
+export interface Article {
   id: string;
+  title: string;
+  description?: string;
+  imageUrl: string;
+  category?: string;
+  link: string;
+  summary: string;
+}
+
+export interface Category {
+  id: number;
   name: string;
   slug: string;
-  icon: string;
-  color: string;
 }
 
 export interface WeatherData {

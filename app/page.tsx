@@ -1,82 +1,81 @@
-import { NewsGrid } from '@/components/news/NewsGrid';
-import { FeaturedNews } from '@/components/news/FeaturedNews';
-import { CategorySection } from '@/components/news/CategorySection';
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 
-async function getNewsData() {
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
-  console.log('API baseUrl:', baseUrl);
+import ArticleCard from "@/components/common/ArticleCard";
+import Header from "@/components/common/Header";
+import { NewsGrid } from "@/components/news/NewsGrid/NewsGrid";
+import { Article } from "@/lib/types";
+import HashtagList from "@/components/common/Hashtags/HashtagList";
+import { hashtags } from "@/lib/data/mockNews";
+import HotNewsLayout from "@/components/news/HotNews/HotNewsLayout";
 
-  try {
-    const urls = [
-      `${baseUrl}/api/news/featured`,
-      `${baseUrl}/api/news?limit=20`,
-      `${baseUrl}/api/categories`,
-      `${baseUrl}/api/news/by-category?limit=4`
-    ];
-    console.log('Fetching:', urls);
-
-    const [featuredRes, latestRes, categoriesRes, categoryArticlesRes] = await Promise.all([
-      fetch(urls[0], { next: { revalidate: 300 } }),
-      fetch(urls[1], { next: { revalidate: 300 } }),
-      fetch(urls[2], { next: { revalidate: 3600 } }),
-      fetch(urls[3], { next: { revalidate: 300 } })
-    ]);
-
-    // Log status
-    console.log('Status:', featuredRes.status, latestRes.status, categoriesRes.status, categoryArticlesRes.status);
-
-    if (
-      !featuredRes.ok ||
-      !latestRes.ok ||
-      !categoriesRes.ok ||
-      !categoryArticlesRes.ok
-    ) {
-      throw new Error('One or more API endpoints failed');
+// Function to fetch articles - executed on the server side
+async function getArticles(): Promise<Article[]> {
+  // Call the internal API route
+  const res = await fetch(
+    `${
+      process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"
+    }/api/articles`,
+    {
+      cache: "no-store", // Always re-fetch data on each request to ensure SSR
     }
+  );
 
-    const [featuredNews, latestNews, categories, categoryArticles] = await Promise.all([
-      featuredRes.json(),
-      latestRes.json(),
-      categoriesRes.json(),
-      categoryArticlesRes.json()
-    ]);
-
-    return {
-      featuredNews: featuredNews.data || [],
-      latestNews: latestNews.data || [],
-      categories: categories.data || [],
-      categoryArticles: categoryArticles.data || {}
-    };
-  } catch (error) {
-    console.error('Error fetching news data:', error);
-    return {
-      featuredNews: [],
-      latestNews: [],
-      categories: [],
-      categoryArticles: {}
-    };
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch articles");
   }
+
+  return res.json();
 }
 
-export default async function HomePage() {
-  const { featuredNews, latestNews, categories, categoryArticles } = await getNewsData();
+export default async function Home() {
+  const articles = await getArticles();
+
+  // Assuming the first article is the main one, and others are sidebar/list
+  const sidebarArticles = articles.slice(1, 4); // Next 3 for sidebar
+  const listArticles = articles.slice(4); // Remaining for the list
 
   return (
-    <main className="min-h-screen">
-      {featuredNews.length > 0 && <FeaturedNews articles={featuredNews} />}
-      {categories.length > 0 && (
-        <CategorySection 
-          categories={categories} 
-          articlesByCategory={categoryArticles}
-        />
-      )}
-      {latestNews.length > 0 && (
-        <NewsGrid 
-          articles={latestNews} 
-          title="Tin tức mới nhất"
-          columns={{ xs: 1, sm: 2, md: 3, lg: 4 }}
-        />
-      )}
-    </main>
+    <Box>
+      <Box sx={{ borderBottom: "1px solid #eee" }}>
+        {/* Header Section */}
+        <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3 } }}>
+          <Header />
+        </Container>
+      </Box>
+
+      <Container maxWidth="lg" sx={{ mb: 5, px: { xs: 2, sm: 3 } }}>
+        <HashtagList hashtags={hashtags} />
+        {/* Main Content Area */}
+        <HotNewsLayout articles={articles} />
+
+        {/* Sidebar */}
+        <Grid sx={{ xs: 12, md: 4 }}>
+          {/* Placeholder for "Featured News" / "Nổi bật" */}
+          <Box sx={{ mb: 2 }}>
+            <Typography
+              variant="h6"
+              sx={{
+                fontWeight: "bold",
+                borderLeft: "4px solid #dd0000",
+                pl: 1,
+              }}
+            >
+              / NỔI BẬT
+            </Typography>
+          </Box>
+          {sidebarArticles.map((article) => (
+            <ArticleCard key={article.id} article={article} variant="small" />
+          ))}
+        </Grid>
+
+        <Grid sx={{ xs: 12, md: 12, mt: 4 }}>
+          <NewsGrid articles={listArticles} title="Tin tức mới nhất" />
+        </Grid>
+      </Container>
+    </Box>
   );
 }

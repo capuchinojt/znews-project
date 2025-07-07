@@ -1,9 +1,9 @@
 import { Grid, Container, Typography, Box } from "@mui/material";
-import { NewsArticle } from "@/lib/types";
-import NewsCard from "@/components/news/NewsCard";
+import { Article } from "@/lib/types";
+import NewsCard from "../NewsCard/NewsCard";
 
 interface NewsGridProps {
-  articles: NewsArticle[];
+  articles: Article[];
   title?: string;
   columns?: {
     xs?: number;
@@ -11,17 +11,28 @@ interface NewsGridProps {
     md?: number;
     lg?: number;
   };
+  variant?: "horizontal" | "vertical";
 }
 
 export function NewsGrid({
   articles,
-  title = "Tin tức mới nhất",
-  columns = { xs: 1, sm: 2, md: 3, lg: 4 },
+  title,
+  columns = { xs: 12, sm: 6, md: 4, lg: 3 },
+  variant = "vertical",
 }: NewsGridProps) {
+  const isVertical = variant === "vertical";
+  const columnsSetting = isVertical ? {
+    md: 12
+  } : {
+    xs: columns.xs || 12,
+    sm: columns.sm || (isVertical ? 6 : 12),
+    md: columns.md || (isVertical ? 4 : 6),
+    lg: columns.lg || (isVertical ? 3 : 4),
+  }
   return (
-    <Container maxWidth="xl" sx={{ py: 4 }}>
+    <Box>
       {title && (
-        <Box sx={{ mb: 3 }}>
+        <Box sx={{ mb: 2 }}>
           <Typography
             variant="h4"
             component="h2"
@@ -46,21 +57,17 @@ export function NewsGrid({
         </Box>
       )}
 
-      <Grid container spacing={3}>
+      <Grid container spacing={2}>
         {articles.map((article) => (
           <Grid
-            // item
-            // xs={columns.xs || 12}
-            // sm={columns.sm || 6}
-            // md={columns.md || 4}
-            // lg={columns.lg || 3}
+            size={columnsSetting}
             key={article.id}
             component="div"
           >
-            <NewsCard article={article} />
+            <NewsCard article={article} variant={variant} />
           </Grid>
         ))}
       </Grid>
-    </Container>
+    </Box>
   );
 }

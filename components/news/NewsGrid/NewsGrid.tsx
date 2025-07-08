@@ -57,7 +57,7 @@ export function NewsGrid({
         </Box>
       )}
 
-      <Grid container spacing={2}>
+      <Grid container spacing={1}>
         {articles.map((article) => (
           <Grid
             size={columnsSetting}

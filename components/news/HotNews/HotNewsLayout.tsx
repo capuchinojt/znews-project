@@ -1,5 +1,6 @@
 "use client";
 import { useMediaQuery, useTheme } from "@mui/material";
+
 import { Article } from "@/lib/types";
 import HotNews from "./HotNews";
 

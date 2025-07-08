@@ -42,3 +42,19 @@ export interface APIResponse<T> {
   status: 'success' | 'error';
   total?: number;
 }
+
+export interface Book {
+  id: string;
+  title: string;
+  imageUrl: string;
+  link: string;
+}
+
+export interface Multimedia {
+  id: string;
+  title: string;
+  description?: string;
+  imageUrl: string;
+  category: string;
+  link: string;
+}

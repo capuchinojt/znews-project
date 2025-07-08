@@ -1,4 +1,4 @@
-import { Category, NewsArticle } from "../types";
+import { Book, Category, NewsArticle } from "../types";
 
 export const mockNewsData: NewsArticle[] = [
   {
@@ -31,76 +31,60 @@ export const categories: Category[] = [
 
 export const mockNews = [
   {
-    id: 1,
+    id: "1",
     title: "Trịnh Linh Giang vô địch đơn nam PPA Tour châu Á",
-    summary:
-      "Tay vợt trẻ Việt Nam đã có chiến thắng ấn tượng tại giải đấu danh giá",
-    image:
-      "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=400&h=250&fit=crop",
+    description: "Tay vợt trẻ Việt Nam đã có chiến thắng ấn tượng tại giải đấu danh giá",
+    imageUrl: "/images/IMG_5885.webp",
     category: "Thể thao",
-    publishedAt: "2024-01-15T10:30:00Z",
-    isMain: true,
+    link: "/article/trinh-linh-giang-ppa-tour",
   },
   {
-    id: 2,
+    id: "2",
     title: "Sao Liverpool tiếc tùng, không dự tăng lễ của Jota",
-    summary:
-      "Ngôi sao Liverpool bày tỏ sự tiếc nuối khi không thể tham dự lễ cưới của đồng đội",
-    image:
-      "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400&h=250&fit=crop",
+    description: "Ngôi sao Liverpool bày tỏ sự tiếc nuối khi không thể tham dự lễ cưới của đồng đội",
+    imageUrl: "/images/sao_liverpool.webp",
     category: "Thể thao",
-    publishedAt: "2024-01-15T09:15:00Z",
-    isMain: false,
+    link: "/article/liverpool-jota",
   },
   {
-    id: 3,
+    id: "3",
     title: 'Anh Tây "ăn sập" hẻm nhỏ, đãn TP.HCM 30 năm còn phải xin địa chỉ',
-    summary: "Câu chuyện thú vị về một người nước ngoài yêu ẩm thực Việt Nam",
-    image:
-      "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=400&h=250&fit=crop",
+    description: "Câu chuyện thú vị về một người nước ngoài yêu ẩm thực Việt Nam",
+    imageUrl: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=400&h=250&fit=crop",
     category: "Đời sống",
-    publishedAt: "2024-01-15T08:00:00Z",
-    isMain: false,
+    link: "/article/anh-tay-an-sap",
   },
   {
-    id: 4,
+    id: "4",
     title: 'Vì "ngộ" - tự kể có bệnh ăn tâm thần đền ông trùm thế giới ngầm',
-    summary: "Câu chuyện ly kỳ về thế giới ngầm và những nhân vật đặc biệt",
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=250&fit=crop",
+    description: "Câu chuyện ly kỳ về thế giới ngầm và những nhân vật đặc biệt",
+    imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=250&fit=crop",
     category: "Xã hội",
-    publishedAt: "2024-01-15T07:30:00Z",
-    isMain: false,
+    link: "/article/vi-ngo",
   },
   {
-    id: 5,
+    id: "5",
     title: "Điện viên phim người lớn trở thành giáng viên đại học ở Hàn Quốc",
-    summary: "Câu chuyện về sự thay đổi nghề nghiệp và cuộc sống mới",
-    image:
-      "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=250&fit=crop",
+    description: "Câu chuyện về sự thay đổi nghề nghiệp và cuộc sống mới",
+    imageUrl: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=250&fit=crop",
     category: "Quốc tế",
-    publishedAt: "2024-01-15T06:45:00Z",
-    isMain: false,
+    link: "/article/dien-vien-han-quoc",
   },
   {
-    id: 6,
+    id: "6",
     title: "Rui ro nghề trong tài pickleball từ vụ tấn công ở TP Hải Phòng",
-    summary: "Phân tích về tình hình an ninh và các biện pháp bảo vệ",
-    image:
-      "https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=400&h=250&fit=crop",
+    description: "Phân tích về tình hình an ninh và các biện pháp bảo vệ",
+    imageUrl: "/Chung_khoan_znews_thach_thao.webp",
     category: "Thể thao",
-    publishedAt: "2024-01-15T11:00:00Z",
-    isMain: false,
+    link: "/article/trong-tai-pickleball",
   },
   {
-    id: 7,
+    id: "7",
     title: "Bộ GD&ĐT công bố đáp án 18 môn thi tốt nghiệp THPT 2025",
-    summary: "Thông tin chính thức về kỳ thi tốt nghiệp THPT năm 2025",
-    image:
-      "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=400&h=250&fit=crop",
+    description: "Thông tin chính thức về kỳ thi tốt nghiệp THPT năm 2025",
+    imageUrl: "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=400&h=250&fit=crop",
     category: "Giáo dục",
-    publishedAt: "2024-01-15T12:15:00Z",
-    isMain: false,
+    link: "/article/thi-thpt-2025",
   },
 ];
 
@@ -119,7 +103,7 @@ export const articles = [
     title:
       "FIFA Club World Cup 2025: Trình Linh Quang vô địch đơn nam PPA Tour Châu Âu",
     description: "Mô tả ngắn về giải đấu FIFA Club World Cup 2025.",
-    imageUrl: "/images/fifa-club-world-cup.jpg",
+    imageUrl: "/images/IMG_5885.webp",
     category: "FIFA Club World Cup",
     link: "/article/fifa-club-world-cup",
   },
@@ -128,7 +112,7 @@ export const articles = [
     title: "Sao Liverpool tiếc tung, không dự tăng lễ của Jota",
     description:
       "Thông tin về cầu thủ Liverpool vắng mặt trong tang lễ của Jota.",
-    imageUrl: "/images/liverpool-jota.jpg",
+    imageUrl: "/images/sao_liverpool.webp",
     category: "Bóng đá",
     link: "/article/liverpool-jota",
   },
@@ -137,7 +121,7 @@ export const articles = [
     title: "Anh Tây 'ăn sập' hẻm nhỏ, dân TP.HCM 30 năm còn phải xin địa chỉ",
     description:
       "Câu chuyện về một người nước ngoài khám phá ẩm thực hẻm ở TP.HCM.",
-    imageUrl: "/images/anh-tay-an-sap.jpg",
+    imageUrl: "/images/anh-tay-an-sap.gif",
     category: "Ăn uống",
     link: "/article/anh-tay-an-sap",
   },
@@ -163,7 +147,7 @@ export const articles = [
     title: "Rủi ro nghe trọng tài pickleball từ vụ tấn công ở TP Hải Phòng",
     description:
       "Thông tin về vụ việc liên quan đến trọng tài pickleball ở Hải Phòng.",
-    imageUrl: "/images/trong-tai-pickleball.jpg",
+    imageUrl: "/images/trong-tai-pickleball.webp",
     category: "Thể thao",
     link: "/article/trong-tai-pickleball",
   },
@@ -171,53 +155,53 @@ export const articles = [
     id: "8",
     title: "Bộ GD&ĐT công bố đáp án 18 môn thi tốt nghiệp THPT 2025",
     description: "Thông báo về đáp án các môn thi tốt nghiệp THPT 2025.",
-    imageUrl: "/images/thi-thpt-2025.jpg",
+    imageUrl: "/images/thi-thpt-2025.webp",
     category: "Giáo dục",
     link: "/article/thi-thpt-2025",
   },
 ];
 
-export const books = [
+export const books: Book[] = [
   {
     id: 'book-1',
     title: 'Cách thức khai thác AI hiệu quả trong nghiên cứu và viết học thuật',
-    imageUrl: '/images/books/ai-research.jpg', // Placeholder image
+    imageUrl: '/images/books/bismark.webp', // Placeholder image
     link: '/book/ai-research',
   },
   {
     id: 'book-2',
     title: '3 chìa khóa để bạn hoàn tất khóa thiền cùng Osho mà không bỏ cuộc',
-    imageUrl: '/images/books/osho-book.jpg',
+    imageUrl: '/images/books/nguyen_phan_que_mai_the_mountains_sing_dust_child_xuat_khau_van_hoc_viet_ra_the_gioi.webp',
     link: '/book/osho-meditation',
   },
   {
     id: 'book-3',
     title: 'Khám phá 10 nghề cổ vang danh Việt Nam tại góc đọc cuối tuần',
-    imageUrl: '/images/books/vietnam-jobs.jpg',
+    imageUrl: '/images/books/Znews_Duong_vao_Thien_3_.webp',
     link: '/book/vietnam-jobs',
   },
   {
     id: 'book-4',
     title: 'Tác giả Việt đang vươn ra thế giới theo cách của riêng mình',
-    imageUrl: '/images/books/vietnamese-author.jpg',
+    imageUrl: '/images/books/Thiet_ke_chua_co_ten_50_.webp',
     link: '/book/vietnamese-author',
   },
   {
     id: 'book-5',
     title: 'Khi nào bạn nên làm ngược với số đông?',
-    imageUrl: '/images/books/go-against-crowd.jpg',
+    imageUrl: '/images/books/dream_about_success.webp',
     link: '/book/go-against-crowd',
   },
   {
     id: 'book-6',
     title: 'Top 5 cuốn sách về khởi nghiệp không thể bỏ qua',
-    imageUrl: '/images/books/startup-books.jpg',
+    imageUrl: '/images/books/02eab535fa024100a194c28994f8d5ee.webp',
     link: '/book/startup-books',
   },
   {
     id: 'book-7',
     title: 'Hành trình khám phá vũ trụ qua những trang sách',
-    imageUrl: '/images/books/space-books.jpg',
+    imageUrl: '/images/books/Bat_nat_hoc_duong.webp',
     link: '/book/space-books',
   },
 ];

@@ -11,6 +11,8 @@ import { getBooks } from "@/lib/api/books";
 import { getMultimedia } from "@/lib/api/multimedia";
 import MultimediaSection from "@/components/multimedia/MultimediaSection";
 import MainContent from "@/components/common/MainContent/MainContent";
+import { CategorySection } from "@/components/common/Section";
+import { mockBusinessArticles, mockLifestyleArticles } from "@/lib/data/mockCategoryData";
 
 export default async function Home() {
   const [articles, news, books, multimedia] = await Promise.all([
@@ -51,6 +53,26 @@ export default async function Home() {
 
       <Container maxWidth="lg" sx={{ mb: 5, px: { xs: 2, sm: 3 } }}>
         <MainContent articles={articles} />
+      </Container>
+
+      <Container maxWidth="lg" sx={{ mb: 0 }}>
+        <CategorySection
+          title="Kinh doanh"
+          articles={mockBusinessArticles}
+          categorySlug="business"
+          showNavigation={true}
+          showDescription={true}
+        />
+      </Container>
+
+      <Container maxWidth="lg" sx={{ mb: 0 }}>
+        <CategorySection
+          title="Lifestyle"
+          articles={mockLifestyleArticles}
+          categorySlug="lifestyle"
+          showNavigation={true}
+          showDescription={true}
+        />
       </Container>
     </Box>
   );

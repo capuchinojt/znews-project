@@ -30,6 +30,7 @@ export interface BaseNewsComponentProps {
 // Specific props for NewsCard
 export interface NewsCardProps extends BaseNewsComponentProps {
   article: Article;
+  side?: "left" | "right"; // Position of image relative to content
 }
 
 // Specific props for NewsGrid
@@ -42,6 +43,7 @@ export interface NewsGridProps extends BaseNewsComponentProps {
     md?: number;
     lg?: number;
   };
+  side?: "left" | "right"; // Position of image relative to content for all cards
 }
 
 // Re-export Article type for convenience

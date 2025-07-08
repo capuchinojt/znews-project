@@ -27,7 +27,7 @@ export default function HotNews({
     return {
       mainArticle: articles[0] || null,
       sidebarArticles: articles.slice(1, 3), // Use articles[1] and articles[2] for sidebar
-      newsGridArticles: articles.slice(3), // Remaining for news grid
+      newsGridArticles: articles.slice(3, 8), // Remaining for news grid
     };
   }, [articles]);
 

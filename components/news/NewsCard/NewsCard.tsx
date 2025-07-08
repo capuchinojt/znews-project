@@ -35,6 +35,7 @@ export default function NewsCard({
   border = true,
   customDimensions,
   responsiveDimensions,
+  side = "left", // Default image position is left
 }: NewsCardProps) {
   // Early return for missing required data
   if (!article?.title || !article?.imageUrl || !article?.link) {
@@ -43,6 +44,7 @@ export default function NewsCard({
   }
 
   const isHorizontal = variant === "horizontal";
+  const imageOnRight = isHorizontal && side === "right";
 
   // Merge default dimensions with custom dimensions
   const getVariantDimensions = (
@@ -160,88 +162,179 @@ export default function NewsCard({
     >
       <Card sx={cardStyles}>
         <Grid container spacing={1} sx={{ height: "100%" }}>
-          {/* Image Column - Fixed width để đảm bảo consistency */}
-          <Grid
-            size={isHorizontal ? 4 : 12}
-            sx={{
-              flexShrink: 0,
-              width: isHorizontal
-                ? `${
-                    typeof dimensions.imageWidth === "number"
-                      ? dimensions.imageWidth
-                      : 120
-                  }px`
-                : "100%",
-              maxWidth: isHorizontal
-                ? `${
-                    typeof dimensions.imageWidth === "number"
-                      ? dimensions.imageWidth
-                      : 120
-                  }px`
-                : "100%",
-            }}
-          >
-            <CardMedia
-              sx={{
-                ...mediaStyles,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                overflow: "hidden",
-              }}
-            >
-              <LazyImage
-                src={article.imageUrl}
-                alt={article.title}
-                width={
-                  typeof dimensions.imageWidth === "number"
-                    ? dimensions.imageWidth
-                    : 400
-                }
-                height={dimensions.imageHeight}
-                className="w-full h-full object-cover"
-              />
-            </CardMedia>
-          </Grid>
-
-          {/* Content Column - Takes remaining space */}
-          <Grid
-            size={isHorizontal ? 8 : 12}
-            sx={{
-              flex: 1,
-              minWidth: 0, // Allows text truncation to work properly
-            }}
-          >
-            <CardContent
-              sx={{
-                flex: 1,
-                p: 1,
-                pt: 0,
-                height: "100%",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "flex-start",
-                "&:last-child": {
-                  pb: 1,
-                  pt: 0,
-                },
-              }}
-            >
-              <Typography variant="caption" component="h3" sx={titleStyles}>
-                {article.title}
-              </Typography>
-
-              {isDisplayDescription && article.description && (
-                <Typography
-                  variant="body2"
-                  color="text.secondary"
-                  sx={descriptionStyles}
+          {/* Conditional rendering based on side prop */}
+          {imageOnRight ? (
+            <>
+              {/* Content Column - Left side when image is on right */}
+              <Grid
+                size={isHorizontal ? 8 : 12}
+                sx={{
+                  flex: 1,
+                  minWidth: 0, // Allows text truncation to work properly
+                }}
+              >
+                <CardContent
+                  sx={{
+                    flex: 1,
+                    p: 1,
+                    pt: 0,
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "flex-start",
+                    "&:last-child": {
+                      pb: 1,
+                      pt: 0,
+                    },
+                  }}
                 >
-                  {article.description}
-                </Typography>
-              )}
-            </CardContent>
-          </Grid>
+                  <Typography variant="caption" component="h3" sx={titleStyles}>
+                    {article.title}
+                  </Typography>
+
+                  {isDisplayDescription && article.description && (
+                    <Typography
+                      variant="body2"
+                      color="text.secondary"
+                      sx={descriptionStyles}
+                    >
+                      {article.description}
+                    </Typography>
+                  )}
+                </CardContent>
+              </Grid>
+
+              {/* Image Column - Right side */}
+              <Grid
+                size={isHorizontal ? 4 : 12}
+                sx={{
+                  flexShrink: 0,
+                  width: isHorizontal
+                    ? `${
+                        typeof dimensions.imageWidth === "number"
+                          ? dimensions.imageWidth
+                          : 120
+                      }px`
+                    : "100%",
+                  maxWidth: isHorizontal
+                    ? `${
+                        typeof dimensions.imageWidth === "number"
+                          ? dimensions.imageWidth
+                          : 120
+                      }px`
+                    : "100%",
+                }}
+              >
+                <CardMedia
+                  sx={{
+                    ...mediaStyles,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    overflow: "hidden",
+                  }}
+                >
+                  <LazyImage
+                    src={article.imageUrl}
+                    alt={article.title}
+                    width={
+                      typeof dimensions.imageWidth === "number"
+                        ? dimensions.imageWidth
+                        : 400
+                    }
+                    height={dimensions.imageHeight}
+                    className="w-full h-full object-cover"
+                  />
+                </CardMedia>
+              </Grid>
+            </>
+          ) : (
+            <>
+              {/* Image Column - Left side (default) */}
+              <Grid
+                size={isHorizontal ? 4 : 12}
+                sx={{
+                  flexShrink: 0,
+                  width: isHorizontal
+                    ? `${
+                        typeof dimensions.imageWidth === "number"
+                          ? dimensions.imageWidth
+                          : 120
+                      }px`
+                    : "100%",
+                  maxWidth: isHorizontal
+                    ? `${
+                        typeof dimensions.imageWidth === "number"
+                          ? dimensions.imageWidth
+                          : 120
+                      }px`
+                    : "100%",
+                }}
+              >
+                <CardMedia
+                  sx={{
+                    ...mediaStyles,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    overflow: "hidden",
+                  }}
+                >
+                  <LazyImage
+                    src={article.imageUrl}
+                    alt={article.title}
+                    width={
+                      typeof dimensions.imageWidth === "number"
+                        ? dimensions.imageWidth
+                        : 400
+                    }
+                    height={dimensions.imageHeight}
+                    className="w-full h-full object-cover"
+                  />
+                </CardMedia>
+              </Grid>
+
+              {/* Content Column - Right side (default) */}
+              <Grid
+                size={isHorizontal ? 8 : 12}
+                sx={{
+                  flex: 1,
+                  minWidth: 0, // Allows text truncation to work properly
+                }}
+              >
+                <CardContent
+                  sx={{
+                    flex: 1,
+                    p: 1,
+                    pt: 0,
+                    px: 1,
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "flex-start",
+                    "&:last-child": {
+                      pb: 1,
+                      pt: 0,
+                    },
+                  }}
+                >
+                  <Typography variant="caption" component="h3" sx={titleStyles}>
+                    {article.title}
+                  </Typography>
+
+                  {isDisplayDescription && article.description && (
+                    <Typography
+                      variant="body2"
+                      color="text.secondary"
+                      sx={descriptionStyles}
+                    >
+                      {article.description}
+                    </Typography>
+                  )}
+                </CardContent>
+              </Grid>
+            </>
+          )}
         </Grid>
       </Card>
     </Link>

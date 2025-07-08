@@ -12,6 +12,7 @@ export function NewsGrid({
   customDimensions = {},
   responsiveDimensions = {},
   border = true, // Default border to true
+  side, // New prop for image position
 }: NewsGridProps) {
   const isVertical = variant === "vertical";
   const columnsSetting = isVertical
@@ -67,6 +68,7 @@ export function NewsGrid({
               customDimensions={customDimensions}
               responsiveDimensions={responsiveDimensions}
               border={border}
+              side={side}
             />
           </Grid>
         ))}

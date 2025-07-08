@@ -1,11 +1,12 @@
 import { NewsGrid } from "@/components/news/NewsGrid/NewsGrid";
 import { Box, Grid } from "@mui/material";
 
-import SidebarArticlesSection from "../Section/SidebarArticlesSection";
 import AdvContent from "../AdvContent/AdvContent";
 import MostReadListSidebar from "../Section/SidebarMostReadList";
 import PodcastSidebar from "../Section/PodcastSidebar";
 import { mockPodcastData } from "@/lib/data/mockPodcast";
+import { MagazineSidebar } from "../Section";
+import { mockMagazines } from "@/lib/data/mockMagazines";
 
 export default function MainContent({
   articles,
@@ -31,8 +32,12 @@ export default function MainContent({
       <Grid size="grow" sx={{ display: { xs: "none", md: "block" } }}>
         <Box sx={{ padding: 1, borderRadius: 1, height: 150 }}>
           <AdvContent />
+
           <MostReadListSidebar articles={articles} />
+
           <PodcastSidebar podcasts={mockPodcastData} />
+
+          <MagazineSidebar magazines={mockMagazines} />
         </Box>
       </Grid>
     </Grid>

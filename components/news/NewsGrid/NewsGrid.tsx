@@ -1,34 +1,29 @@
-import { Grid, Container, Typography, Box } from "@mui/material";
-import { Article } from "@/lib/types";
-import NewsCard from "../NewsCard/NewsCard";
+import { Grid, Typography, Box } from "@mui/material";
 
-interface NewsGridProps {
-  articles: Article[];
-  title?: string;
-  columns?: {
-    xs?: number;
-    sm?: number;
-    md?: number;
-    lg?: number;
-  };
-  variant?: "horizontal" | "vertical";
-}
+import NewsCard from "../NewsCard/NewsCard";
+import type { NewsGridProps } from "@/lib/types/newsComponents";
 
 export function NewsGrid({
   articles,
   title,
   columns = { xs: 12, sm: 6, md: 4, lg: 3 },
   variant = "vertical",
+  isDisplayDescription = true,
+  customDimensions = {},
+  responsiveDimensions = {},
+  border = true, // Default border to true
 }: NewsGridProps) {
   const isVertical = variant === "vertical";
-  const columnsSetting = isVertical ? {
-    md: 12
-  } : {
-    xs: columns.xs || 12,
-    sm: columns.sm || (isVertical ? 6 : 12),
-    md: columns.md || (isVertical ? 4 : 6),
-    lg: columns.lg || (isVertical ? 3 : 4),
-  }
+  const columnsSetting = isVertical
+    ? {
+        md: 12,
+      }
+    : {
+        xs: columns.xs || 12,
+        sm: columns.sm || (isVertical ? 6 : 12),
+        md: columns.md || (isVertical ? 4 : 6),
+        lg: columns.lg || (isVertical ? 3 : 4),
+      };
   return (
     <Box>
       {title && (
@@ -63,8 +58,16 @@ export function NewsGrid({
             size={columnsSetting}
             key={article.id}
             component="div"
+            sx={{ mt: 0 }}
           >
-            <NewsCard article={article} variant={variant} />
+            <NewsCard
+              article={article}
+              variant={variant}
+              isDisplayDescription={isDisplayDescription}
+              customDimensions={customDimensions}
+              responsiveDimensions={responsiveDimensions}
+              border={border}
+            />
           </Grid>
         ))}
       </Grid>

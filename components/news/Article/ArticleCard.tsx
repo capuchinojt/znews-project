@@ -14,7 +14,7 @@ const CARD_HEIGHTS = {
 
 const TEXT_VARIANTS = {
   main: "h5",
-  sidebar: "body2", 
+  sidebar: "body2",
   small: "body1",
 } as const;
 
@@ -50,7 +50,7 @@ export default function ArticleCard({
 }: ArticleCardProps) {
   // Early return for missing required data
   if (!article?.title || !article?.imageUrl || !article?.link) {
-    console.warn('ArticleCard: Missing required article data');
+    console.warn("ArticleCard: Missing required article data");
     return null;
   }
 
@@ -59,7 +59,7 @@ export default function ArticleCard({
   const textVariant = TEXT_VARIANTS[variant];
   const lineClamp = LINE_CLAMPS[variant];
   const lineHeight = LINE_HEIGHTS[variant];
-  
+
   // Cleaner media styles calculation
   const getCardMediaStyles = (): SxProps<Theme> => {
     const baseStyles: SxProps<Theme> = {
@@ -120,15 +120,17 @@ export default function ArticleCard({
           alt={article.title}
           sx={getCardMediaStyles()}
         />
-        <CardContent sx={{ 
-          flexGrow: 1, 
-          pt: 1, 
-          pb: '0 !important', 
-          px: 0,
-          '&:last-child': {
-            pb: '0 !important'
-          }
-        }}>
+        <CardContent
+          sx={{
+            flexGrow: 1,
+            pt: 1,
+            pb: "0 !important",
+            px: 0,
+            "&:last-child": {
+              pb: "0 !important",
+            },
+          }}
+        >
           <Typography
             gutterBottom
             variant={textVariant}

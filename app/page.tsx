@@ -10,6 +10,7 @@ import { getArticles, getNews } from "@/lib/api/news";
 import { getBooks } from "@/lib/api/books";
 import { getMultimedia } from "@/lib/api/multimedia";
 import MultimediaSection from "@/components/multimedia/MultimediaSection";
+import MainContent from "@/components/common/MainContent/MainContent";
 
 export default async function Home() {
   const [articles, news, books, multimedia] = await Promise.all([
@@ -46,6 +47,10 @@ export default async function Home() {
 
       <Container maxWidth="lg" sx={{ mb: 5, px: { xs: 0, sm: 0 } }}>
         {multimedia.length > 0 && <MultimediaSection articles={multimedia} />}
+      </Container>
+
+      <Container maxWidth="lg" sx={{ mb: 5, px: { xs: 2, sm: 3 } }}>
+        <MainContent articles={articles} />
       </Container>
     </Box>
   );

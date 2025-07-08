@@ -37,6 +37,7 @@ export default function HotNews({
       articles={newsGridArticles}
       variant="horizontal"
       columns={{ md: 12, lg: 12 }}
+      isDisplayDescription={false}
     />
   ), [newsGridArticles]);
 

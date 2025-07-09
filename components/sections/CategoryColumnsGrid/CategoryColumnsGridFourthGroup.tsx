@@ -4,20 +4,20 @@ import React from 'react';
 import CategoryColumnsGridBase from './CategoryColumnsGridBase';
 import { useCategoryGroup } from '@/lib/hooks/useCategoryColumns';
 
-interface CategoryColumnsGridFirstGroupProps {
+interface CategoryColumnsGridFourthGroupProps {
   showTitle?: boolean;
   maxArticlesPerColumn?: number;
 }
 
-export default function CategoryColumnsGridFirstGroup({
+export default function CategoryColumnsGridFourthGroup({
   showTitle = false,
   maxArticlesPerColumn = 3,
-}: CategoryColumnsGridFirstGroupProps) {
-  const { groupData, loading, error } = useCategoryGroup('first-group');
+}: CategoryColumnsGridFourthGroupProps) {
+  const { groupData, loading, error } = useCategoryGroup('fourth-group');
 
   return (
     <CategoryColumnsGridBase
-      groupId="first-group"
+      groupId="fourth-group"
       title={showTitle ? groupData?.title : undefined}
       categories={groupData?.categories || []}
       loading={loading}

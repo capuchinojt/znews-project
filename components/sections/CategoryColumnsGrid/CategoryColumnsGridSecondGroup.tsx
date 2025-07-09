@@ -1,57 +1,28 @@
+'use client';
+
 import React from 'react';
-import { Box, Grid, Container } from '@mui/material';
-import CategoryColumn from '../CategoryColumn';
-import type { Article } from '@/lib/types';
+import CategoryColumnsGridBase from './CategoryColumnsGridBase';
+import { useCategoryGroup } from '@/lib/hooks/useCategoryColumns';
 
 interface CategoryColumnsGridSecondGroupProps {
-  entertainmentArticles: Article[];
-  sportsArticles: Article[];
-  societyArticles: Article[];
-  lawArticles: Article[];
+  showTitle?: boolean;
+  maxArticlesPerColumn?: number;
 }
 
 export default function CategoryColumnsGridSecondGroup({
-  entertainmentArticles,
-  sportsArticles,
-  societyArticles,
-  lawArticles,
+  showTitle = false,
+  maxArticlesPerColumn = 3,
 }: CategoryColumnsGridSecondGroupProps) {
-  const categories = [
-    {
-      title: 'GIẢI TRÍ',
-      articles: entertainmentArticles,
-      categorySlug: 'giai-tri',
-    },
-    {
-      title: 'THỂ THAO',
-      articles: sportsArticles,
-      categorySlug: 'the-thao',
-    },
-    {
-      title: 'XÃ HỘI',
-      articles: societyArticles,
-      categorySlug: 'xa-hoi',
-    },
-    {
-      title: 'PHÁP LUẬT',
-      articles: lawArticles,
-      categorySlug: 'phap-luật',
-    },
-  ];
+  const { groupData, loading, error } = useCategoryGroup('second-group');
 
   return (
-    <Container maxWidth="lg" sx={{ py: 4 }}>
-      <Grid container spacing={3}>
-        {categories.map((category) => (
-          <Grid size={{ xs: 6, sm: 6, md: 3 }} key={category.title}>
-            <CategoryColumn
-              title={category.title}
-              articles={category.articles}
-              categorySlug={category.categorySlug}
-            />
-          </Grid>
-        ))}
-      </Grid>
-    </Container>
+    <CategoryColumnsGridBase
+      groupId="second-group"
+      title={showTitle ? groupData?.title : undefined}
+      categories={groupData?.categories || []}
+      loading={loading}
+      error={error}
+      maxArticlesPerColumn={maxArticlesPerColumn}
+    />
   );
 }

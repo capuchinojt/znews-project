@@ -324,3 +324,323 @@ export const mockLawArticles: Article[] = [
     summary: "Luật an toàn thông tin mạng",
   },
 ];
+
+// Third Group - Mock data for publishing articles
+export const mockPublishingArticles: Article[] = [
+  {
+    id: "publishing-1",
+    title: "Ngành xuất bản Việt Nam phát triển mạnh",
+    description: "Ngành xuất bản Việt Nam đạt nhiều thành tựu đáng kể trong năm qua.",
+    imageUrl: "/images/publishing/Thiet_ke_chua_co_ten_7_.webp",
+    category: "publishing",
+    link: "/publishing/nganh-xuat-ban-phat-trien",
+    summary: "Thành tựu ngành xuất bản Việt Nam",
+  },
+  {
+    id: "publishing-2", 
+    title: "Sách điện tử ngày càng phổ biến",
+    description: "Xu hướng đọc sách điện tử tăng mạnh trong thời đại số.",
+    imageUrl: "/images/publishing/sach_1.webp",
+    category: "publishing",
+    link: "/publishing/sach-dien-tu-pho-bien",
+    summary: "Xu hướng sách điện tử",
+  },
+  {
+    id: "publishing-3",
+    title: "Nhà xuất bản nước ngoài đầu tư vào Việt Nam",
+    description: "Nhiều nhà xuất bản quốc tế mở rộng thị trường tại Việt Nam.",
+    imageUrl: "/images/publishing/cuoc_thi_viet_chua_lanh_bi_gia_mao.webp",
+    category: "publishing", 
+    link: "/publishing/nha-xuat-ban-nuoc-ngoai",
+    summary: "Đầu tư xuất bản nước ngoài",
+  },
+  {
+    id: "publishing-4",
+    title: "Bản quyền sách được bảo vệ chặt chẽ hơn",
+    description: "Các biện pháp bảo vệ bản quyền sách được tăng cường.",
+    imageUrl: "/images/publishing/copyright-protection.webp",
+    category: "publishing",
+    link: "/publishing/bao-ve-ban-quyen-sach", 
+    summary: "Bảo vệ bản quyền sách",
+  },
+];
+
+// Mock data for book world articles
+export const mockBookWorldArticles: Article[] = [
+  {
+    id: "bookworld-1",
+    title: "10 cuốn sách bán chạy nhất năm 2025",
+    description: "Danh sách những cuốn sách được độc giả yêu thích nhất trong năm.",
+    imageUrl: "/images/books/Bat_nat_hoc_duong.webp",
+    category: "bookworld",
+    link: "/bookworld/sach-ban-chay-nhat-2025",
+    summary: "Top sách bán chạy 2025",
+  },
+  {
+    id: "bookworld-2",
+    title: "Thế giới sách Việt Nam ra mắt tác phẩm mới",
+    description: "Nhiều tác phẩm văn học Việt Nam được xuất bản trong năm qua.",
+    imageUrl: "/images/books/dream_about_success.webp", 
+    category: "bookworld",
+    link: "/bookworld/tac-pham-viet-nam-moi",
+    summary: "Văn học Việt Nam mới",
+  },
+  {
+    id: "bookworld-3",
+    title: "Sách thiếu nhi Việt Nam chinh phục độc giả quốc tế",
+    description: "Các tác phẩm thiếu nhi Việt Nam được dịch và xuất bản ra nước ngoài.",
+    imageUrl: "/images/books/Thiet_ke_chua_co_ten_50_.webp",
+    category: "bookworld",
+    link: "/bookworld/sach-thieu-nhi-quoc-te",
+    summary: "Sách thiếu nhi ra quốc tế",
+  },
+  {
+    id: "bookworld-4",
+    title: "Hội sách tại TP.HCM thu hút hàng triệu lượt khách",
+    description: "Sự kiện hội sách lớn nhất năm tại TP.HCM thành công tốt đẹp.",
+    imageUrl: "/images/books/nguyen_phan_que_mai_the_mountains_sing_dust_child_xuat_khau_van_hoc_viet_ra_the_gioi.webp",
+    category: "bookworld",
+    link: "/bookworld/hoi-sach-tp-hcm",
+    summary: "Hội sách TP.HCM thành công",
+  },
+];
+
+// Mock data for education articles  
+export const mockEducationArticles: Article[] = [
+  {
+    id: "education-1",
+    title: "Giáo dục STEM được đẩy mạnh trong trường học",
+    description: "Các trường học tích cực triển khai chương trình giáo dục STEM.",
+    imageUrl: "/images/education/HOT06185.webp",
+    category: "education",
+    link: "/education/giao-duc-stem",
+    summary: "Giáo dục STEM trong trường học",
+  },
+  {
+    id: "education-2",
+    title: "Học trực tuyến thay đổi phương pháp giảng dạy",
+    description: "Công nghệ học trực tuyến mang lại nhiều cơ hội mới cho giáo dục.",
+    imageUrl: "/images/education/re_1.webp",
+    category: "education", 
+    link: "/education/hoc-truc-tuyen",
+    summary: "Xu hướng học trực tuyến",
+  },
+  {
+    id: "education-3",
+    title: "Chương trình giáo dục mới tập trung vào kỹ năng mềm",
+    description: "Giáo dục Việt Nam chú trọng phát triển kỹ năng mềm cho học sinh.",
+    imageUrl: "/images/education/z6728583323975_1512f8f1e02e1dab8e2d9b6b9a4f51e9_1.webp",
+    category: "education",
+    link: "/education/ky-nang-mem-giao-duc",
+    summary: "Giáo dục kỹ năng mềm",
+  },
+  {
+    id: "education-4", 
+    title: "Thi THPT Quốc gia 2025 có nhiều thay đổi",
+    description: "Kỳ thi THPT Quốc gia năm 2025 áp dụng nhiều quy định mới.",
+    imageUrl: "/images/education/thpt-quoc-gia-2025.webp",
+    category: "education",
+    link: "/education/thpt-quoc-gia-2025",
+    summary: "Thay đổi thi THPT 2025",
+  },
+];
+
+// Mock data for automotive articles
+export const mockAutomotiveArticles: Article[] = [
+  {
+    id: "automotive-1",
+    title: "Xe điện VinFast mở rộng thị trường quốc tế",
+    description: "VinFast tiếp tục chinh phục các thị trường xe điện trên thế giới.",
+    imageUrl: "/images/automotive/1111.webp",
+    category: "automotive",
+    link: "/automotive/vinfast-mo-rong-thi-truong",
+    summary: "VinFast mở rộng quốc tế",
+  },
+  {
+    id: "automotive-2",
+    title: "Ô tô hybrid ngày càng được ưa chuộng tại Việt Nam",
+    description: "Xe hybrid trở thành lựa chọn phổ biến của người tiêu dùng Việt.",
+    imageUrl: "/images/automotive/IMG_5831.webp", 
+    category: "automotive",
+    link: "/automotive/oto-hybrid-viet-nam",
+    summary: "Xu hướng xe hybrid",
+  },
+  {
+    id: "automotive-3",
+    title: "Thuế ô tô có thể được điều chỉnh trong năm 2025",
+    description: "Chính phủ đang xem xét điều chỉnh thuế đối với một số dòng xe.",
+    imageUrl: "/images/automotive/Julia_Nguyen_18.webp",
+    category: "automotive",
+    link: "/automotive/thue-oto-2025",
+    summary: "Điều chỉnh thuế ô tô 2025",
+  },
+  {
+    id: "automotive-4",
+    title: "Công nghệ lái xe tự động phát triển mạnh",
+    description: "Các hãng xe đầu tư mạnh vào công nghệ lái xe tự động.",
+    imageUrl: "/images/automotive/autonomous-driving.webp",
+    category: "automotive", 
+    link: "/automotive/lai-xe-tu-dong",
+    summary: "Công nghệ lái xe tự động",
+  },
+];
+
+// Fourth Group - Mock data for author articles
+export const mockAuthorArticles: Article[] = [
+  {
+    id: "author-1", 
+    title: "Tác giả Nguyễn Nhật Ánh ra mắt tiểu thuyết mới",
+    description: "Nhà văn Nguyễn Nhật Ánh giới thiệu tác phẩm mới dành cho thiếu nhi.",
+    imageUrl: "/images/authors/02eab535fa024100a194c28994f8d5ee.webp",
+    category: "author",
+    link: "/author/nguyen-nhat-anh-tieu-thuyet-moi",
+    summary: "Tiểu thuyết mới của Nguyễn Nhật Ánh",
+  },
+  {
+    id: "author-2",
+    title: "Cuộc phỏng vấn độc quyền với tác giả Tô Hoài",
+    description: "Chia sẻ từ tác giả về hành trình sáng tác và nguồn cảm hứng.",
+    imageUrl: "/images/authors/dream_about_success.webp",
+    category: "author",
+    link: "/author/phong-van-to-hoai", 
+    summary: "Phỏng vấn tác giả Tô Hoài",
+  },
+  {
+    id: "author-3",
+    title: "Tác giả trẻ Việt Nam được vinh danh quốc tế",
+    description: "Nhiều tác giả trẻ Việt Nam nhận giải thưởng văn học quốc tế.",
+    imageUrl: "/images/authors/nguyen_phan_que_mai_the_mountains_sing_dust_child_xuat_khau_van_hoc_viet_ra_the_gioi.webp",
+    category: "author",
+    link: "/author/tac-gia-tre-vinh-danh-quoc-te",
+    summary: "Tác giả trẻ được vinh danh",
+  },
+  {
+    id: "author-4",
+    title: "Hội nghị gặp mặt các nhà văn Việt Nam",
+    description: "Sự kiện giao lưu văn học quy tụ nhiều tác giả nổi tiếng.",
+    imageUrl: "/images/authors/writers-conference.webp",
+    category: "author", 
+    link: "/author/hoi-nghi-nha-van",
+    summary: "Hội nghị nhà văn Việt Nam",
+  },
+];
+
+// Mock data for my reading articles
+export const mockMyReadingArticles: Article[] = [
+  {
+    id: "myreading-1",
+    title: "Cuốn sách thay đổi cuộc đời tôi",
+    description: "Những cuốn sách có tác động sâu sắc đến cuộc sống của độc giả.",
+    imageUrl: "/images/reading/nguyen_phan_que_mai_the_mountains_sing_dust_child_xuat_khau_van_hoc_viet_ra_the_gioi.webp",
+    category: "myreading",
+    link: "/myreading/sach-thay-doi-cuoc-doi",
+    summary: "Sách thay đổi cuộc đời",
+  },
+  {
+    id: "myreading-2",
+    title: "Thói quen đọc sách trước khi ngủ",
+    description: "Lợi ích của việc đọc sách trước khi đi ngủ đối với sức khỏe.",
+    imageUrl: "/images/reading/Thiet_ke_chua_co_ten_50_.webp",
+    category: "myreading",
+    link: "/myreading/doc-sach-truoc-khi-ngu",
+    summary: "Đọc sách trước khi ngủ",
+  },
+  {
+    id: "myreading-3", 
+    title: "Cách tôi ghi chú khi đọc sách",
+    description: "Phương pháp ghi chú hiệu quả để ghi nhớ nội dung sách tốt hơn.",
+    imageUrl: "/images/reading/bismark.webp",
+    category: "myreading",
+    link: "/myreading/cach-ghi-chu-doc-sach",
+    summary: "Ghi chú khi đọc sách",
+  },
+  {
+    id: "myreading-4",
+    title: "Đọc sách điện tử vs sách giấy: So sánh trải nghiệm",
+    description: "Ưu nhược điểm của việc đọc sách điện tử và sách giấy.",
+    imageUrl: "/images/reading/ebook-vs-paperbook.webp",
+    category: "myreading",
+    link: "/myreading/sach-dien-tu-vs-sach-giay",
+    summary: "So sánh sách điện tử và sách giấy",
+  },
+];
+
+// Mock data for reading culture articles
+export const mockReadingCultureArticles: Article[] = [
+  {
+    id: "readingculture-1",
+    title: "Văn hóa đọc sách ở Việt Nam đang phục hồi",
+    description: "Thói quen đọc sách của người Việt có những dấu hiệu tích cực.",
+    imageUrl: "/images/culture/an_phu_thong_xe_znews_151.webp", 
+    category: "readingculture",
+    link: "/readingculture/van-hoa-doc-sach-phuc-hoi",
+    summary: "Văn hóa đọc phục hồi",
+  },
+  {
+    id: "readingculture-2",
+    title: "Thư viện công cộng - Không gian văn hóa đọc",
+    description: "Vai trò của thư viện công cộng trong việc xây dựng văn hóa đọc.",
+    imageUrl: "/images/culture/IMG_5831.webp",
+    category: "readingculture", 
+    link: "/readingculture/thu-vien-cong-cong",
+    summary: "Thư viện và văn hóa đọc",
+  },
+  {
+    id: "readingculture-3",
+    title: "Câu lạc bộ đọc sách - Xu hướng mới của giới trẻ",
+    description: "Các câu lạc bộ đọc sách ngày càng thu hút người tham gia.",
+    imageUrl: "/images/culture/Julia_Nguyen_18.webp",
+    category: "readingculture",
+    link: "/readingculture/cau-lac-bo-doc-sach",
+    summary: "Câu lạc bộ đọc sách",
+  },
+  {
+    id: "readingculture-4",
+    title: "Gia đình và văn hóa đọc từ nhỏ",
+    description: "Tầm quan trọng của việc nuôi dưỡng thói quen đọc từ gia đình.",
+    imageUrl: "/images/culture/family-reading.webp",
+    category: "readingculture",
+    link: "/readingculture/gia-dinh-van-hoa-doc",
+    summary: "Gia đình và văn hóa đọc",
+  },
+];
+
+// Mock data for TTDN (Thông tin doanh nghiệp) articles  
+export const mockTTDNArticles: Article[] = [
+  {
+    id: "ttdn-1",
+    title: "Startup công nghệ Việt Nam gọi vốn thành công",
+    description: "Nhiều startup trong nước thu hút đầu tư từ các quỹ quốc tế.",
+    imageUrl: "/images/business/2025_04_04T145333Z_433579739_RC2XPDA5407T_RTRMADP_3_USA_TRUMP_TARIFFS_OPTIONS.webp",
+    category: "ttdn",
+    link: "/ttdn/startup-goi-von-thanh-cong",
+    summary: "Startup Việt gọi vốn thành công",
+  },
+  {
+    id: "ttdn-2", 
+    title: "Doanh nghiệp SME thích ứng với chuyển đổi số",
+    description: "Các doanh nghiệp vừa và nhỏ tích cực ứng dụng công nghệ số.",
+    imageUrl: "/images/business/att.Ll7NR87ZRSOnf96dPFFAIF4qZunBBXe_oMhIMCpd4t8.webp",
+    category: "ttdn",
+    link: "/ttdn/sme-chuyen-doi-so",
+    summary: "SME và chuyển đổi số",
+  },
+  {
+    id: "ttdn-3",
+    title: "Chính sách hỗ trợ doanh nghiệp khởi nghiệp",
+    description: "Các chính sách mới nhằm thúc đẩy hệ sinh thái khởi nghiệp.",
+    imageUrl: "/images/business/Hanh_khach_duoc_dua_len_xe_cuu_thuong_chuyen_dung.webp",
+    category: "ttdn",
+    link: "/ttdn/chinh-sach-ho-tro-khoi-nghiep",
+    summary: "Chính sách hỗ trợ khởi nghiệp",
+  },
+  {
+    id: "ttdn-4",
+    title: "Xu hướng đầu tư vào doanh nghiệp xanh",
+    description: "Các nhà đầu tư ngày càng quan tâm đến doanh nghiệp bền vững.",
+    imageUrl: "/images/business/green-business-investment.webp", 
+    category: "ttdn",
+    link: "/ttdn/dau-tu-doanh-nghiep-xanh",
+    summary: "Đầu tư doanh nghiệp xanh",
+  },
+];

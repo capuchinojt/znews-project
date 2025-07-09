@@ -18,17 +18,11 @@ import {
   mockLifestyleArticles,
 } from "@/lib/data/mockCategoryData";
 import CategoryColumnsGrid from "@/components/sections/CategoryColumnsGrid";
-import { CategoryColumnsGridSecondGroup } from "@/components/sections";
 import {
-  mockTechnologyArticles,
-  mockHealthArticles,
-  mockLifestyleArticles as mockLifestyleColumnsArticles,
-  mockTravelArticles,
-  mockEntertainmentArticles,
-  mockSportsArticles,
-  mockSocietyArticles,
-  mockLawArticles,
-} from "@/lib/data/mockCategoryColumns";
+  CategoryColumnsGridSecondGroup,
+  CategoryColumnsGridThirdGroup,
+  CategoryColumnsGridFourthGroup,
+} from "@/components/sections";
 import { mockMagazineData } from "@/lib/data/mockMagazineData";
 import { mockVideoData } from "@/lib/data/mockVideoData";
 
@@ -89,20 +83,27 @@ export default async function Home() {
 
       <Container maxWidth="lg" sx={{ mb: 0 }}>
         <CategoryColumnsGrid
-          technologyArticles={mockTechnologyArticles}
-          healthArticles={mockHealthArticles}
-          lifestyleArticles={mockLifestyleColumnsArticles}
-          travelArticles={mockTravelArticles}
-          maxArticlesPerColumn={4}
+          maxArticlesPerColumn={3}
         />
       </Container>
 
       <Container maxWidth="lg" sx={{ mb: 0 }}>
         <CategoryColumnsGridSecondGroup
-          entertainmentArticles={mockEntertainmentArticles}
-          sportsArticles={mockSportsArticles}
-          societyArticles={mockSocietyArticles}
-          lawArticles={mockLawArticles}
+          maxArticlesPerColumn={3}
+        />
+      </Container>
+
+      {/* Third Group: Publishing, Book World, Education, Automotive */}
+      <Container maxWidth="lg" sx={{ mb: 0 }}>
+        <CategoryColumnsGridThirdGroup
+          maxArticlesPerColumn={3}
+        />
+      </Container>
+
+      {/* Fourth Group: Authors, My Reading, Reading Culture, Business Info */}
+      <Container maxWidth="lg" sx={{ mb: 0 }}>
+        <CategoryColumnsGridFourthGroup
+          maxArticlesPerColumn={3}
         />
       </Container>
 

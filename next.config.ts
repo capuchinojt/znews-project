@@ -6,10 +6,14 @@ const nextConfig = {
   images: {
     domains: ['example.com', 'images.unsplash.com', 'photo.znews.vn'],
     formats: ['image/webp', 'image/avif'],
+    minimumCacheTTL: 60, // Cache images for 1 minute minimum
   },
   compress: true,
   poweredByHeader: false,
   generateEtags: true,
+  swcMinify: true, // Use SWC for faster builds
+  // Enable static optimization
+  output: 'standalone',
   async headers() {
     return [
       {

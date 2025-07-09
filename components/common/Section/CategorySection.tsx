@@ -25,6 +25,7 @@ export default function CategorySection({
   title,
   articles,
   showNavigation = true,
+  categorySlug = "kinh-doanh",
   showDescription = true,
   maxSidebarArticles = 4,
 }: CategorySectionProps) {
@@ -48,7 +49,7 @@ export default function CategorySection({
       {/* Header Section */}
       <Box sx={{ mb: 3 }}>
         {/* Category Title */}
-        <Link href={`/kinh-doanh`} style={{ textDecoration: "none", color: "inherit" }}>
+        <Link href={`/${categorySlug}`} style={{ textDecoration: "none", color: "inherit" }}>
           <Typography
             variant="h6"
             sx={{

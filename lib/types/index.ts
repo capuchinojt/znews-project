@@ -20,7 +20,7 @@ export interface Article {
   imageUrl: string;
   category?: string;
   link: string;
-  summary: string;
+  summary?: string;
 }
 
 export interface Category {

@@ -6,7 +6,8 @@ export async function getBooks(): Promise<Book[]> {
       process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"
     }/api/books`,
     {
-      cache: "no-store",
+      cache: "force-cache",
+      next: { revalidate: 3600 }, // 1 hour cache
     }
   );
 

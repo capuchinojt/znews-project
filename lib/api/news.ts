@@ -23,7 +23,8 @@ export async function getArticles(): Promise<Article[]> {
       process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"
     }/api/articles`,
     {
-      cache: "no-store",
+      cache: "force-cache",
+      next: { revalidate: 600 }, // 10 minutes cache
     }
   );
 

@@ -2,28 +2,40 @@ import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 
 import Header from "@/components/common/Header";
+import Footer from "@/components/common/Footer";
 import { hashtags } from "@/lib/data/mockNews";
 import SectionFeatured from "@/components/common/Section/SectionFeatured";
 import BookCarousel from "@/components/books/BookCarousel";
+import { MagazineCarousel } from "@/components/magazine";
 
-import { getArticles, getNews } from "@/lib/api/news";
-import { getBooks } from "@/lib/api/books";
-import { getMultimedia } from "@/lib/api/multimedia";
+import { getCachedHomePageData } from "@/lib/api/homepage";
 import MultimediaSection from "@/components/multimedia/MultimediaSection";
 import MainContent from "@/components/common/MainContent/MainContent";
 import { CategorySection } from "@/components/common/Section";
-import { mockBusinessArticles, mockLifestyleArticles } from "@/lib/data/mockCategoryData";
+import {
+  mockBusinessArticles,
+  mockLifestyleArticles,
+} from "@/lib/data/mockCategoryData";
+import CategoryColumnsGrid from "@/components/sections/CategoryColumnsGrid";
+import { CategoryColumnsGridSecondGroup } from "@/components/sections";
+import {
+  mockTechnologyArticles,
+  mockHealthArticles,
+  mockLifestyleArticles as mockLifestyleColumnsArticles,
+  mockTravelArticles,
+  mockEntertainmentArticles,
+  mockSportsArticles,
+  mockSocietyArticles,
+  mockLawArticles,
+} from "@/lib/data/mockCategoryColumns";
+import { mockMagazineData } from "@/lib/data/mockMagazineData";
+
+// Enable ISR (Incremental Static Regeneration)
+export const revalidate = 300; // 5 minutes
 
 export default async function Home() {
-  const [articles, news, books, multimedia] = await Promise.all([
-    getArticles(),
-    getNews(),
-    getBooks(),
-    getMultimedia()
-  ]);
-
-  const sidebarArticles = news.slice(1, 4);
-  const listArticles = articles.slice(4);
+  // Use optimized data fetching
+  const { articles, news, books, multimedia, sidebarArticles, listArticles } = await getCachedHomePageData();
 
   return (
     <Box>
@@ -42,9 +54,7 @@ export default async function Home() {
           sidebarArticles={sidebarArticles}
           hashtags={hashtags}
         />
-        <Box>
-          {books.length > 0 && <BookCarousel books={books} />}
-        </Box>
+        <Box>{books.length > 0 && <BookCarousel books={books} />}</Box>
       </Container>
 
       <Container maxWidth="lg" sx={{ mb: 5, px: { xs: 0, sm: 0 } }}>
@@ -74,6 +84,37 @@ export default async function Home() {
           showDescription={true}
         />
       </Container>
+
+      <Container maxWidth="lg" sx={{ mb: 0 }}>
+        <CategoryColumnsGrid
+          technologyArticles={mockTechnologyArticles}
+          healthArticles={mockHealthArticles}
+          lifestyleArticles={mockLifestyleColumnsArticles}
+          travelArticles={mockTravelArticles}
+          maxArticlesPerColumn={4}
+        />
+      </Container>
+
+      <Container maxWidth="lg" sx={{ mb: 0 }}>
+        <CategoryColumnsGridSecondGroup
+          entertainmentArticles={mockEntertainmentArticles}
+          sportsArticles={mockSportsArticles}
+          societyArticles={mockSocietyArticles}
+          lawArticles={mockLawArticles}
+        />
+      </Container>
+
+      <Box sx={{ backgroundColor: "#f5f5f5", py: 2 }}>
+        <Container maxWidth="lg" sx={{ mb: 2, px: { xs: 2, sm: 3 } }}>
+          <MagazineCarousel
+            magazines={mockMagazineData}
+            title="MAGAZINE"
+          />
+        </Container>
+      </Box>
+
+      {/* Footer */}
+      <Footer />
     </Box>
   );
 }

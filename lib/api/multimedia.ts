@@ -6,7 +6,8 @@ export async function getMultimedia(): Promise<Multimedia[]> {
       process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"
     }/api/multimedia`,
     {
-      cache: "no-store",
+      cache: "force-cache",
+      next: { revalidate: 1800 }, // 30 minutes cache
     }
   );
 

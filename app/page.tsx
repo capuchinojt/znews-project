@@ -7,6 +7,7 @@ import { hashtags } from "@/lib/data/mockNews";
 import SectionFeatured from "@/components/common/Section/SectionFeatured";
 import BookCarousel from "@/components/books/BookCarousel";
 import { MagazineCarousel } from "@/components/magazine";
+import { VideoSection } from "@/components/video";
 
 import { getCachedHomePageData } from "@/lib/api/homepage";
 import MultimediaSection from "@/components/multimedia/MultimediaSection";
@@ -29,6 +30,7 @@ import {
   mockLawArticles,
 } from "@/lib/data/mockCategoryColumns";
 import { mockMagazineData } from "@/lib/data/mockMagazineData";
+import { mockVideoData } from "@/lib/data/mockVideoData";
 
 // Enable ISR (Incremental Static Regeneration)
 export const revalidate = 300; // 5 minutes
@@ -111,6 +113,11 @@ export default async function Home() {
             title="MAGAZINE"
           />
         </Container>
+      </Box>
+
+      {/* Video Section */}
+      <Box sx={{ display: { xs: "none", md: "block" } }}>
+        <VideoSection videos={mockVideoData} title="VIDEO" />
       </Box>
 
       {/* Footer */}
